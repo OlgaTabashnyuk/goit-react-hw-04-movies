@@ -12,6 +12,21 @@ class MoviesPage extends Component {
     desiredMovie: '',
     movies: [],
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.movies !== prevState.movies) {
+      localStorage.setItem('movies', JSON.stringify(this.state.movies));
+    }
+  }
+
+  componentDidMount() {
+    const savedMovies = localStorage.getItem('movies');
+    const parsedMovies = JSON.parse(savedMovies);
+    if (parsedMovies) {
+      this.setState({ movies: parsedMovies });
+    }
+  }
+
   handleChange = event => {
     this.setState({ desiredMovie: event.target.value });
   };
@@ -28,7 +43,6 @@ class MoviesPage extends Component {
   };
 
   render() {
-    // console.log(this.props.match.url);
     const { query, movies } = this.state;
     return (
       <div>

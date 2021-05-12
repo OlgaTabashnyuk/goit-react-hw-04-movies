@@ -24,13 +24,3 @@ const MovieList = ({ movies, location }) => {
 };
 
 export default withRouter(MovieList);
-
-{
-  /* <ul>
-          {movies.map(({ id, title }) => (
-            <li key={id}>
-              <Link to={`${this.props.match.url}/${id}`}>{title}</Link>
-            </li>
-          ))}
-        </ul> */
-}

@@ -19,7 +19,6 @@ class Reviews extends Component {
     const { reviews } = this.state;
     return (
       <div>
-        <h2>Reviews</h2>
         {reviews.length > 0 ? (
           <ul>
             {reviews.map(review => (

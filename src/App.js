@@ -1,10 +1,8 @@
 import { Suspense, lazy } from 'react';
 import { Route, NavLink, Switch } from 'react-router-dom';
-// import Homepage from './views/Homepage';
+
 import AppBar from './components/AppBar';
-// import MovieDetailsPage from './views/MovieDetailsPage';
-// import MoviesPage from './views/MoviesPage';
-// import NotFoundView from './views/NotFoundView';
+
 import routes from './routes';
 import 'modern-normalize/modern-normalize.css';
 // import s from './styles/styles.module.css';
