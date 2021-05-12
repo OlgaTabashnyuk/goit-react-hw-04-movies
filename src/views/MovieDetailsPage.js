@@ -37,7 +37,8 @@ class MovieDetailsPage extends Component {
     if (location.state && location.state.from) {
       return history.push(location.state.from);
     }
-    history.push(routes.movies);
+    history.push(routes.home);
+    // history.push(location?.state?.from || routes.movies); // operational chaining
   };
   render() {
     const { match, location, history } = this.props;

@@ -1,5 +1,5 @@
 import { Component } from 'react';
-
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 class Cast extends Component {
@@ -53,7 +53,7 @@ class Cast extends Component {
   }
 }
 
-export default Cast;
+export default withRouter(Cast);
 
 // ==============НЕ ТРОГАТЬ================================================
 // class Cast extends Component {
