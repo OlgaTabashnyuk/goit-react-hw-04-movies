@@ -15,6 +15,7 @@ class HomePage extends Component {
     const { data } = await axios.get(`${BASE_URL}movie/day?api_key=${API_KEY}`);
 
     this.setState({ movies: data.results });
+    localStorage.clear();
   }
   render() {
     const { movies } = this.state;

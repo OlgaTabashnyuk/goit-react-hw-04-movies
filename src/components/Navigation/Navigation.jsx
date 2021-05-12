@@ -5,11 +5,21 @@ import s from './Navigation.module.css';
 const Navigation = () => {
   return (
     <nav className={s.Navigation}>
-      <NavLink exact to={routes.home} className={s.NavLink}>
+      <NavLink
+        className={s.NavLink}
+        activeClassName={s.NavLinkActive}
+        exact
+        to={routes.home}
+      >
         Home
       </NavLink>
 
-      <NavLink to={routes.movies} className={s.NavLink}>
+      <NavLink
+        className={s.NavLink}
+        activeClassName={s.NavLinkActive}
+        exact
+        to={routes.movies}
+      >
         Movies
       </NavLink>
     </nav>

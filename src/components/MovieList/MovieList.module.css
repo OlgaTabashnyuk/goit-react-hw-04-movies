@@ -1,9 +1,13 @@
-.MovieList {
+.List {
   padding: 0;
   margin: 0;
   list-style: none;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-
+  color: #1b1919;
   display: grid;
   grid-gap: 10px;
+}
+
+.Link {
+  text-decoration: none;
+  color: blue;
 }

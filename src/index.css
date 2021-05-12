@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.NavLink {
+  display: block;
+  font-size: 50px;
+  margin-right: 12px;
+  color: darkblue;
+}
+.NavLink--active {
+  display: block;
+  color: #fff;
+}
+
+.NavLink:hover,
+.NavLink:focus {
+  color: #fff;
+}
+li {
+  list-style: none;
+}

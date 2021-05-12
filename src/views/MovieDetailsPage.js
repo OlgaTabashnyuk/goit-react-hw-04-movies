@@ -47,13 +47,12 @@ class MovieDetailsPage extends Component {
     const { title, genres, release_date, vote_average, overview } = this.state;
 
     return (
-      <div>
-        <button type="button" onClick={this.handleGoBack}>
-          {' '}
+      <div className={s.MovieDetails}>
+        <button className={s.button} type="button" onClick={this.handleGoBack}>
           Back
         </button>
 
-        <ul>
+        <ul className={s.MovieCard}>
           <li>
             <h1>{title}</h1>
             <img

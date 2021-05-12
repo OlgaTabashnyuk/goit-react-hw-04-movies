@@ -27,11 +27,12 @@
      */
 .AppBar {
   display: flex;
+  max-width: 1600px;
   align-items: center;
   min-height: 64px;
   margin-bottom: 25px;
   padding-right: 24px;
-  padding-left: 24px;
+  padding-left: 100px;
   padding-top: 12px;
   padding-bottom: 12px;
   color: #fff;

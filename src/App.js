@@ -22,9 +22,9 @@ const NotFoundView = lazy(() =>
 
 const App = () => (
   <div className="AppBar">
-    <AppBar />
     <Container>
-      <Suspense fallback={<h1>Загружаем...</h1>}>
+      <AppBar />
+      <Suspense fallback={<h1>Loading...</h1>}>
         <Switch>
           <Route exact path={routes.home} component={Homepage} />
           <Route exact path={routes.movies} component={MoviesPage} />

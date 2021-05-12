@@ -1,14 +1,37 @@
 .Navigation {
   display: flex;
 }
-
 .NavLink {
-  font-size: 20px;
-  color: #fff;
+  display: block;
+  font-size: 25px;
   margin-right: 12px;
+  color: darkblue;
+  text-decoration: none;
+}
+.NavLink--active {
+  display: block;
+  color: #fff;
+  text-decoration: underline;
 }
 
 .NavLink:hover,
 .NavLink:focus {
+  color: #fff;
+}
+
+/* 
+.NavLink {
+  display: block;
+  font-size: 20px;
+  margin-right: 12px;
   color: darkblue;
 }
+
+.NavLink--active {
+  display: block;
+  color: #fff;
+}
+.NavLink:hover,
+.NavLink:focus {
+  color: #fff;
+} */
