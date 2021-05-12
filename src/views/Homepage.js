@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import MovieList from '../components/MovieList';
 
 const BASE_URL = 'https://api.themoviedb.org/3/trending/';
 
@@ -20,13 +21,8 @@ class HomePage extends Component {
     return (
       <>
         <h1>Trending today</h1>
-        <ul>
-          {movies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-            </li>
-          ))}
-        </ul>
+
+        <MovieList movies={movies} />
       </>
     );
   }

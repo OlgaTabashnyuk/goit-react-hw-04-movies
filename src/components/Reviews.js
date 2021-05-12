@@ -30,7 +30,7 @@ class Reviews extends Component {
             ))}
           </ul>
         ) : (
-          'Sorry..There is no reviews given for this movie yet. You can help other users by leaving your review'
+          'Sorry..There is no reviews given for this movie yet.'
         )}
       </div>
     );

@@ -6,35 +6,26 @@ import Homepage from './views/Homepage';
 import MovieDetailsPage from './views/MovieDetailsPage';
 import MoviesPage from './views/MoviesPage';
 import NotFoundView from './views/NotFoundView';
+import routes from './routes';
 // import s from './styles/styles.module.css';
 
 const App = () => (
   <>
     <ul>
       <li>
-        <NavLink
-          exact
-          to="/"
-          className="NavLink"
-          activeClassName="NavLink--active"
-        >
-          Home
+        <NavLink exact to={routes.home}>
+          {' '}
+          Home{' '}
         </NavLink>
       </li>
       <li>
-        <NavLink
-          to="/movies"
-          className="NavLink"
-          activeClassName="NavLink--active"
-        >
-          Movies
-        </NavLink>
+        <NavLink to={routes.movies}> Movies </NavLink>
       </li>
     </ul>
     <Switch>
-      <Route exact path="/" component={Homepage} />
-      <Route exact path="/movies" component={MoviesPage} />
-      <Route path="/movies/:movieId" component={MovieDetailsPage} />
+      <Route exact path={routes.home} component={Homepage} />
+      <Route exact path={routes.movies} component={MoviesPage} />
+      <Route path={routes.movieDetails} component={MovieDetailsPage} />
       <Route component={NotFoundView} />
     </Switch>
   </>

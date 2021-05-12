@@ -3,6 +3,7 @@ import { Route, NavLink, Switch } from 'react-router-dom';
 import axios from 'axios';
 import Cast from '../components/Cast';
 import Reviews from '../components/Reviews';
+import routes from '../routes';
 
 const MOVIEDETAILS_URL = 'https://api.themoviedb.org/3/movie';
 
@@ -31,55 +32,67 @@ class MovieDetailsPage extends Component {
       movie: response.data,
     });
   }
+  handleGoBack = () => {
+    const { location, history } = this.props;
+    if (location.state && location.state.from) {
+      return history.push(location.state.from);
+    }
+    history.push(routes.movies);
+  };
   render() {
-    const { match } = this.props;
+    const { match, location, history } = this.props;
 
     const { title, genres, release_date, vote_average, overview } = this.state;
 
     return (
       <div>
-        <button type="button">Back</button>
+        <button type="button" onClick={this.handleGoBack}>
+          {' '}
+          Back
+        </button>
 
-        <h1>{title}</h1>
-        <img
-          src={`https://image.tmdb.org/t/p/w300${this.state.movie.poster_path}`}
-          alt={title}
-        />
-        <h2>Genres:</h2>
-        <ul>
-          {genres.map(genre => (
-            <li key={genre.id}>{genre.name}</li>
-          ))}
-        </ul>
-        <h3>Release date: {release_date}</h3>
-        <h4>User score: {vote_average}</h4>
-
-        <h3>User Overview</h3>
-        <p>{overview}</p>
-        <h3>Additional information</h3>
         <ul>
           <li>
-            <NavLink
-              to={`${match.url}/cast`}
-              className="NavLink"
-              activeClassName="NavLink--active"
-            >
-              Cast
-            </NavLink>
+            <h1>{title}</h1>
+            <img
+              src={`https://image.tmdb.org/t/p/w300${this.state.movie.poster_path}`}
+              alt={title}
+            />
+            <h2>Genres:</h2>
+            <ul>
+              {genres.map(genre => (
+                <li key={genre.id}>{genre.name}</li>
+              ))}
+            </ul>
+            <h3>Release date: {release_date}</h3>
+            <h4>User score: {vote_average}</h4>
+
+            <h3>Overview</h3>
+            <p>{overview}</p>
+          </li>
+        </ul>
+
+        <ul>
+          <h3>Additional information</h3>
+          <li>
+            <NavLink to={{ pathname: `${match.url}/cast` }}>Cast</NavLink>
           </li>
           <li>
             <NavLink
-              to={`${match.url}/reviews`}
-              className="NavLink"
-              activeClassName="NavLink--active"
+              to={{
+                pathname: `${match.url}/reviews`,
+                state: {
+                  from: location,
+                },
+              }}
             >
               Reviews
             </NavLink>
           </li>
         </ul>
         <Switch>
-          <Route exact path="/movies/:movieId/cast" component={Cast} />
-          <Route path="/movies/:movieId/reviews" component={Reviews} />
+          <Route exact path={`${match.path}/cast`} component={Cast} />
+          <Route path={`${match.path}/reviews`} component={Reviews} />
         </Switch>
       </div>
     );

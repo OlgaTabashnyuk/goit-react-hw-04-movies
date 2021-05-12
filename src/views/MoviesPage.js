@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import MovieList from '../components/MovieList';
 
 const SEARCH_URL = 'https://api.themoviedb.org/3/search/movie?';
 
@@ -27,7 +28,7 @@ class MoviesPage extends Component {
   };
 
   render() {
-    console.log(this.props.match.url);
+    // console.log(this.props.match.url);
     const { query, movies } = this.state;
     return (
       <div>
@@ -44,15 +45,8 @@ class MoviesPage extends Component {
             Search
           </button>
         </form>
-        <ul>
-          {movies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`${this.props.match.url}/${movie.id}`}>
-                {movie.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
+
+        <MovieList movies={movies} />
       </div>
     );
   }
