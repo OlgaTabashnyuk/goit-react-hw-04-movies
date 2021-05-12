@@ -1,0 +1,14 @@
+.Navigation {
+  display: flex;
+}
+
+.NavLink {
+  font-size: 20px;
+  color: #fff;
+  margin-right: 12px;
+}
+
+.NavLink:hover,
+.NavLink:focus {
+  color: darkblue;
+}

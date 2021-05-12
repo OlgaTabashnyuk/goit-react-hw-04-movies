@@ -4,6 +4,7 @@ import axios from 'axios';
 import Cast from '../components/Cast';
 import Reviews from '../components/Reviews';
 import routes from '../routes';
+import s from './MovieDetailsPage.module.css';
 
 const MOVIEDETAILS_URL = 'https://api.themoviedb.org/3/movie';
 
@@ -41,7 +42,7 @@ class MovieDetailsPage extends Component {
     // history.push(location?.state?.from || routes.movies); // operational chaining
   };
   render() {
-    const { match, location, history } = this.props;
+    const { match, location } = this.props;
 
     const { title, genres, release_date, vote_average, overview } = this.state;
 

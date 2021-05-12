@@ -1,11 +1,9 @@
 import { Suspense, lazy } from 'react';
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import AppBar from './components/AppBar';
-
+import Container from './components/Container';
 import routes from './routes';
-import 'modern-normalize/modern-normalize.css';
-// import s from './styles/styles.module.css';
 
 const Homepage = lazy(() =>
   import('./views/Homepage.js' /*webpackChunkName: "home-page" */),
@@ -23,18 +21,19 @@ const NotFoundView = lazy(() =>
 );
 
 const App = () => (
-  <>
+  <div className="AppBar">
     <AppBar />
-
-    <Suspense fallback={<h1>Загружаем...</h1>}>
-      <Switch>
-        <Route exact path={routes.home} component={Homepage} />
-        <Route exact path={routes.movies} component={MoviesPage} />
-        <Route path={routes.movieDetails} component={MovieDetailsPage} />
-        <Route component={NotFoundView} />
-      </Switch>
-    </Suspense>
-  </>
+    <Container>
+      <Suspense fallback={<h1>Загружаем...</h1>}>
+        <Switch>
+          <Route exact path={routes.home} component={Homepage} />
+          <Route exact path={routes.movies} component={MoviesPage} />
+          <Route path={routes.movieDetails} component={MovieDetailsPage} />
+          <Route component={NotFoundView} />
+        </Switch>
+      </Suspense>
+    </Container>
+  </div>
 );
 
 export default App;

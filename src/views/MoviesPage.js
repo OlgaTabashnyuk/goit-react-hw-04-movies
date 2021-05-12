@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+
 import MovieList from '../components/MovieList';
+import s from './MoviesPage.module.css';
 
 const SEARCH_URL = 'https://api.themoviedb.org/3/search/movie?';
 
@@ -46,18 +47,14 @@ class MoviesPage extends Component {
     const { query, movies } = this.state;
     return (
       <div>
-        <form className="MoviesPageForm" onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <input
-            className="MoviesPageForm-input"
+            className={s.Input}
             type="text"
             value={query}
             onChange={this.handleChange}
             placeholder="Search "
           />
-
-          <button className="MovieSearchButton" type="submit">
-            Search
-          </button>
         </form>
 
         <MovieList movies={movies} />

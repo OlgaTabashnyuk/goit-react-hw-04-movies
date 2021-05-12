@@ -1,4 +1,4 @@
-body {
+/* body {
   background-color: #fff;
   color: #212121;
   line-height: 1.5;
@@ -10,31 +10,4 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
-}
-
-.NavLink {
-  font-size: 20px;
-  color: blue;
-}
-
-.NavLink--active {
-  color: palevioletred;
-}
-
-.MovieList {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  grid-gap: 24px;
-}
-
-.Container {
-  max-width: 1440px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-}
+} */
