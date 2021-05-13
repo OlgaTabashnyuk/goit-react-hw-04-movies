@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import axios from 'axios';
-import Cast from '../components/Cast';
-import Reviews from '../components/Reviews';
-import routes from '../routes';
+import Cast from '../../components/Cast/Cast';
+import Reviews from '../../components/Review/Reviews';
+import routes from '../../routes';
 import s from './MovieDetailsPage.module.css';
-
+import noImg from '../../no-img.jpg';
 const MOVIEDETAILS_URL = 'https://api.themoviedb.org/3/movie';
 
 const API_KEY = 'b48946e6ff9e999360a939491d6174d8';
@@ -27,7 +27,7 @@ class MovieDetailsPage extends Component {
     const response = await axios.get(
       `${MOVIEDETAILS_URL}/${movieId}?api_key=${API_KEY}&append_to_response=videos`,
     );
-
+    // console.log(response);
     this.setState({
       ...response.data,
       movie: response.data,
@@ -48,42 +48,60 @@ class MovieDetailsPage extends Component {
 
     return (
       <div className={s.MovieDetails}>
-        <button className={s.button} type="button" onClick={this.handleGoBack}>
+        <button className={s.Button} type="button" onClick={this.handleGoBack}>
+          {/* <span role="img" aria-label="arrow-left-emoji">
+            👈
+          </span> */}
           Back
         </button>
 
-        <ul className={s.MovieCard}>
-          <li>
+        <div className={s.MovieCard}>
+          <img
+            className={s.MoviePoster}
+            src={
+              this.state.movie.poster_path
+                ? `https://image.tmdb.org/t/p/w500${this.state.movie.poster_path}`
+                : noImg
+            }
+            alt={title}
+          />
+          <div className={s.MovieDescr}>
             <h1>{title}</h1>
-            <img
-              src={`https://image.tmdb.org/t/p/w300${this.state.movie.poster_path}`}
-              alt={title}
-            />
             <h2>Genres:</h2>
             <ul>
               {genres.map(genre => (
                 <li key={genre.id}>{genre.name}</li>
               ))}
             </ul>
-            <h3>Release date: {release_date}</h3>
-            <h4>User score: {vote_average}</h4>
 
-            <h3>Overview</h3>
+            <p>User score: {vote_average}</p>
+
+            <h2>Overview</h2>
             <p>{overview}</p>
-          </li>
-        </ul>
+            <p>Release date: {release_date}</p>
+          </div>
+        </div>
 
         <ul>
           <h3>Additional information</h3>
           <li>
-            <NavLink to={{ pathname: `${match.url}/cast` }}>Cast</NavLink>
+            <NavLink
+              to={{
+                pathname: `${match.url}/cast`,
+                state: {
+                  from: location.state.from,
+                },
+              }}
+            >
+              Cast
+            </NavLink>
           </li>
           <li>
             <NavLink
               to={{
                 pathname: `${match.url}/reviews`,
                 state: {
-                  from: location,
+                  from: location.state.from,
                 },
               }}
             >

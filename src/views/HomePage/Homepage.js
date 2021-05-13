@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import axios from 'axios';
-import MovieList from '../components/MovieList';
+import MovieList from '../../components/MovieList/MovieList';
 
 const BASE_URL = 'https://api.themoviedb.org/3/trending/';
 
@@ -17,13 +16,17 @@ class HomePage extends Component {
     this.setState({ movies: data.results });
     localStorage.clear();
   }
+
   render() {
     const { movies } = this.state;
     return (
       <>
         <h1>Trending today</h1>
 
-        <MovieList movies={movies} />
+        <MovieList
+          movies={movies}
+          // pathname={this.props.location.pathname}
+        />
       </>
     );
   }

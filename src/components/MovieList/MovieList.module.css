@@ -11,3 +11,19 @@
   text-decoration: none;
   color: blue;
 }
+li {
+  list-style: none;
+}
+.PreviewList {
+  padding-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px;
+}
+.PreviewItem {
+  margin: 10px;
+  width: 200px;
+}
+.PreviewImg {
+  width: 100%;
+}

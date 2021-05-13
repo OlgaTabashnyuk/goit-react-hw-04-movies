@@ -1,0 +1,12 @@
+.ReviewsList {
+  margin: -15px;
+}
+.ReviewsItem {
+  margin: 15px;
+  padding: 10px;
+  max-width: 1000px;
+}
+.ReviewAuthor {
+  font-weight: 700;
+  margin-bottom: 10px;
+}

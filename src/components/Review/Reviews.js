@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import axios from 'axios';
+import s from '../Review/Review.module.css';
 
 class Reviews extends Component {
   state = {
@@ -13,17 +14,16 @@ class Reviews extends Component {
     );
 
     this.setState({ reviews: response.data.results });
-    console.log(response.data.results);
   }
   render() {
     const { reviews } = this.state;
     return (
       <div>
         {reviews.length > 0 ? (
-          <ul>
+          <ul className={s.ReviewsList}>
             {reviews.map(review => (
-              <li key={review.id}>
-                Author: {review.author}
+              <li key={review.id} className={s.ReviewsItem}>
+                <p className={s.ReviewAuthor}>Author: {review.author}</p>
                 <p>{review.content}</p>
               </li>
             ))}

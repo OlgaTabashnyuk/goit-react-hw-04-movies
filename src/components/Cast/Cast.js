@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+import s from '../Cast/Cast.module.css';
+import noImg from '../../no-img.jpg';
 
 class Cast extends Component {
   state = {
@@ -16,16 +18,20 @@ class Cast extends Component {
     this.setState({ casts: response.data.cast });
   }
   render() {
-    // const { match } = this.props;
     const { casts } = this.state;
     return (
       <div>
         {casts.length > 0 ? (
-          <ul>
+          <ul className={s.CastList}>
             {casts.map(cast => (
-              <li key={cast.id}>
+              <li key={cast.id} className={s.CastItem}>
                 <img
-                  src={`https://image.tmdb.org/t/p/w138_and_h175_face/${cast.profile_path}`}
+                  className={s.CastImage}
+                  src={
+                    cast.profile_path
+                      ? `https://image.tmdb.org/t/p/w138_and_h175_face/${cast.profile_path}`
+                      : noImg
+                  }
                   alt=""
                 />
                 {cast.name}
